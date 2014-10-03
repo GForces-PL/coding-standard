@@ -1,0 +1,18 @@
+{
+  "name": "michalfelski/gforces-coding-standard",
+  "description": "GForces PHP CodeSniffer Coding Standard.",
+  "keywords": ["yii", "phpcs", "coding standards"],
+  "authors": [
+    {
+      "name": "Michał Felski",
+      "homepage": "https://github.com/michalfelski",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/michalfelski/gforces-coding-standard/issues"
+  },
+  "require": {
+    "squizlabs/php_codesniffer": ">=1.4.2"
+  }
+}
