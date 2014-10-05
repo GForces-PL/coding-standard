@@ -8,11 +8,11 @@
         <exclude name="PSR1.Classes.ClassDeclaration" />
         <exclude name="PSR2.Files.EndFileNewline" />
         <exclude name="Generic.ControlStructures.InlineControlStructure" />
+        <exclude name="Generic.Files.LineLength" />
     </rule>
 
     <rule ref="Generic.Files.EndFileNoNewline" />
     <rule ref="PEAR.ControlStructures.MultiLineCondition" />
-    <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
 
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/vendors/*</exclude-pattern>
