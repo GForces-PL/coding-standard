@@ -1,33 +1,12 @@
 <?php
-/**
- * Yii_Sniffs_Files_Utf8EncodingSniff.
- * PHP version 5
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Artem Demchenkov <ardemchenkov@gmail.com>
- * @copyright 2013 Artem Demchenkov
- * @license   http://www.yiiframework.com/license/ BSD license
- * @link      http://pear.php.net/package/PHP_CodeSniffer
- */
-/**
- * Yii_Sniffs_Files_Utf8EncodingSniff.
- * Ensures that this file have UTF-8 encoding.
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Artem Demchenkov <ardemchenkov@gmail.com>
- * @copyright 2013 Artem Demchenkov
- * @license   http://www.yiiframework.com/license/ BSD license
- * @link      http://pear.php.net/package/PHP_CodeSniffer
- */
+
 class GForces_Sniffs_Files_Utf8EncodingSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
      * @var array
      */
-    public $supportedTokenizers = array(
-        'PHP',
-    );
+    public $supportedTokenizers = ['PHP'];
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -47,7 +26,7 @@ class GForces_Sniffs_Files_Utf8EncodingSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // chech the first open tag.
+        // check the first open tag.
         if ($stackPtr !== 0) {
             if ($phpcsFile->findPrevious(T_OPEN_TAG, ($stackPtr - 1)) !== false) return;
         }
@@ -57,14 +36,10 @@ class GForces_Sniffs_Files_Utf8EncodingSniff implements PHP_CodeSniffer_Sniff
         $encoding = mb_detect_encoding($fileContent, 'UTF-8, ASCII, ISO-8859-1');
 
         if ($encoding !== 'UTF-8') {
-            $fileName = basename($filePath);
-
             if ($encoding) {
-                $error = 'File must use only UTF-8 encoding. but %s found';
-                $phpcsFile->addError($error, $stackPtr, 'FileIsNotUTF8Encoded', array($encoding));
+                $phpcsFile->addError('File must use only UTF-8 encoding. but %s found', $stackPtr, 'FileIsNotUTF8Encoded', [$encoding]);
             } else {
-                $error = 'File must use only UTF-8 encoding.';
-                $phpcsFile->addError($error, 0);
+                $phpcsFile->addError('File must use only UTF-8 encoding.', 0);
             }
         }
     }

@@ -27,11 +27,5 @@ class GForces_Sniffs_WhiteSpace_EmptyLinesSniff implements PHP_CodeSniffer_Sniff
         if ($tokens[$position]['line'] - $tokens[$stackPtr]['line'] > 2) {
             $phpcsFile->addError('Too many empty lines.', $position, 'EmptyLines');
         }
-
-        //$opener = $tokens[$stackPtr]['scope_opener'];
-        //$nextContent = $phpcsFile->findNext(T_WHITESPACE, ($opener + 1), null, true);
-        //if ($tokens[$nextContent]['line'] - $tokens[$opener]['line'] > 1) {
-        //    $phpcsFile->addError('%s body must begin in the first line after opening brace.', $nextContent, 'OpeningBrace', [$tokens[$stackPtr]['content']]);
-        //}
     }
 }
