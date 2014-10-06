@@ -33,7 +33,7 @@ class GForces_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSn
                 }
             } else {
                 if ($tokens[($stackPtr - 3)]['code'] == T_WHITESPACE) {
-                    $error = 'Empty line before object operator is not not allowed.';
+                    $error = 'Only one EOL character before object operator is allowed.';
                     $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($stackPtr - 2), '');
