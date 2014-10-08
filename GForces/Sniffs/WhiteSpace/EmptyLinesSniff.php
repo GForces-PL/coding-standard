@@ -20,10 +20,12 @@ class GForces_Sniffs_WhiteSpace_EmptyLinesSniff implements PHP_CodeSniffer_Sniff
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $position = $stackPtr + 1;
-        while ($tokens[$position]['code'] == T_WHITESPACE) {
+        $position = $stackPtr;
+
+        while (isset($tokens[$position + 1]) && $tokens[$position + 1]['code'] == T_WHITESPACE) {
             $position++;
         }
+
         if ($tokens[$position]['line'] - $tokens[$stackPtr]['line'] > 2) {
             $phpcsFile->addError('Too many empty lines.', $position, 'EmptyLines');
         }
