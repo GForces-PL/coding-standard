@@ -37,7 +37,6 @@ class GForces_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffe
                 if (strpos($tokens[$prevContent]['content'], $phpcsFile->eolChar) === false) {
                     $phpcsFile->fixer->replaceToken($closeBrace, $phpcsFile->eolChar . $tokens[$closeBrace]['content']);
                 }
-
                 $phpcsFile->fixer->endChangeset();
             }
         }
