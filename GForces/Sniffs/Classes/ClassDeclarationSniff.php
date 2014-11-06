@@ -23,15 +23,10 @@ class GForces_Sniffs_Classes_ClassDeclarationSniff implements PHP_CodeSniffer_Sn
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $errorData = array(strtolower($tokens[$stackPtr]['content']));
-
         $nextClass = $phpcsFile->findNext($this->register(), ($tokens[$stackPtr]['scope_closer'] + 1));
         if ($nextClass !== false) {
             $error = 'Each %s must be in a file by itself';
-            $phpcsFile->addError($error, $nextClass, 'MultipleClasses', $errorData);
-            $phpcsFile->recordMetric($stackPtr, 'One class per file', 'no');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'One class per file', 'yes');
+            $phpcsFile->addError($error, $nextClass, 'MultipleClasses', strtolower($tokens[$stackPtr]['content']));
         }
     }
 }
