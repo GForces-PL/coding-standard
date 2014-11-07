@@ -33,12 +33,12 @@ class GForces_Sniffs_ControlStructures_MultiLineStatementsWithoutBracesSniff imp
             $phpcsFile->addError($error, $start, 'SingleLineExpressionMustHaveASpaceAfterParenthesisExpression', array(strtoupper($tokens[$stackPtr]['content'])));
         }
 
-        if ($tokens[$start]['code'] == T_WHITESPACE && $tokens[$start]['length'] > 1) {
+        if ($tokens[$start]['code'] == T_WHITESPACE && strlen($tokens[$start]['content']) > 1) {
             $error = 'Single line "%s" must have exactly one space after parenthesis. %s found.';
-            $phpcsFile->addError($error, $start, 'SingleLineExpressionMustHaveASpaceAfterParenthesisExpression', array(strtoupper($tokens[$stackPtr]['content']), $tokens[$start]['length']));
+            $phpcsFile->addError($error, $start, 'SingleLineExpressionMustHaveASpaceAfterParenthesisExpression', array(strtoupper($tokens[$stackPtr]['content']), strlen($tokens[$start]['content'])));
         }
 
-        if ($tokens[$start]['code'] == T_WHITESPACE && $tokens[$start]['length'] == 0) {
+        if ($tokens[$start]['code'] == T_WHITESPACE && strlen($tokens[$start]['content']) == 0) {
             $error = 'Multi-line "%s" must have braces. Add braces or convert it to single line.';
             $phpcsFile->addError($error, $start, 'SingleLineExpressionMustHaveASpaceAfterParenthesisExpression', array(strtoupper($tokens[$stackPtr]['content'])));
         }

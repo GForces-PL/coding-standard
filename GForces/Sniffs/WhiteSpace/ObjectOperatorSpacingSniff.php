@@ -27,27 +27,18 @@ class GForces_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSn
         if ($tokens[($stackPtr - 1)]['code'] == T_WHITESPACE) {
             if ($tokens[($stackPtr - 2)]['code'] != T_WHITESPACE) {
                 $error = 'Space found before object operator';
-                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-                if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken(($stackPtr - 1), '');
-                }
+                $phpcsFile->addError($error, $stackPtr, 'Before');
             } else {
                 if ($tokens[($stackPtr - 3)]['code'] == T_WHITESPACE) {
                     $error = 'Only one EOL character before object operator is allowed.';
-                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-                    if ($fix === true) {
-                        $phpcsFile->fixer->replaceToken(($stackPtr - 2), '');
-                    }
+                    $phpcsFile->addError($error, $stackPtr, 'Before');
                 }
             }
         }
 
         if ($tokens[($stackPtr + 1)]['code'] == T_WHITESPACE) {
             $error = 'Space found after object operator';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'After');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
-            }
+            $phpcsFile->addError($error, $stackPtr, 'After');
         }
     }
 }

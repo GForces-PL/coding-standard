@@ -26,19 +26,7 @@ class GForces_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffe
         if ($prevContent !== $tokens[$stackPtr]['scope_opener'] && $tokens[$prevContent]['line'] !== ($tokens[$closeBrace]['line'] - 1)) {
             $error = 'The closing brace for the %s must go on the next line after the body';
             $data = array($tokens[$stackPtr]['content']);
-            $fix = $phpcsFile->addFixableError($error, $closeBrace, 'CloseBraceAfterBody', $data);
-
-            if ($fix === true) {
-                $phpcsFile->fixer->beginChangeset();
-                for ($i = ($prevContent + 1); $i < $closeBrace; $i++) {
-                    $phpcsFile->fixer->replaceToken($i, '');
-                }
-
-                if (strpos($tokens[$prevContent]['content'], $phpcsFile->eolChar) === false) {
-                    $phpcsFile->fixer->replaceToken($closeBrace, $phpcsFile->eolChar . $tokens[$closeBrace]['content']);
-                }
-                $phpcsFile->fixer->endChangeset();
-            }
+            $phpcsFile->addError($error, $closeBrace, 'CloseBraceAfterBody', $data);
         }
     }
 }

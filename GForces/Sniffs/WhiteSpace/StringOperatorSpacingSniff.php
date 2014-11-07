@@ -9,7 +9,7 @@ class GForces_Sniffs_WhiteSpace_StringOperatorSpacingSniff implements PHP_CodeSn
      */
     public function register()
     {
-        return array(T_STRING_CONCAT, T_CONCAT_EQUAL);
+        return [T_STRING_CONCAT, T_CONCAT_EQUAL];
     }
 
     /**
@@ -25,7 +25,7 @@ class GForces_Sniffs_WhiteSpace_StringOperatorSpacingSniff implements PHP_CodeSn
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr + 1]['code'] != T_WHITESPACE || ($tokens[$stackPtr + 1]['code'] == T_WHITESPACE && $tokens[$stackPtr + 1]['length'] != 1)) {
+        if ($tokens[$stackPtr + 1]['code'] != T_WHITESPACE || ($tokens[$stackPtr + 1]['code'] == T_WHITESPACE && strlen($tokens[$stackPtr + 1]['content']) != 1)) {
             $phpcsFile->addError('Expected one space after concatenation operator.', $stackPtr);
         }
 
@@ -43,7 +43,7 @@ class GForces_Sniffs_WhiteSpace_StringOperatorSpacingSniff implements PHP_CodeSn
             $phpcsFile->addError('Only one EOL character before concatenation operator is allowed.', $stackPtr);
         }
 
-        if ($tokens[$stackPtr]['line'] == $tokens[$position]['line'] && $tokens[$stackPtr - 1]['length'] != 1) {
+        if ($tokens[$stackPtr]['line'] == $tokens[$position]['line'] && strlen($tokens[$stackPtr - 1]['content']) != 1) {
             $phpcsFile->addError('Expected one space before concatenation operator.', $stackPtr);
         }
     }
