@@ -4,13 +4,12 @@
   "keywords": ["yii", "phpcs", "coding standards"],
   "authors": [
     {
-      "name": "Michał Felski",
-      "homepage": "https://github.com/michalfelski",
+      "name": "Michal Felski",
       "role": "Maintainer"
     }
   ],
   "support": {
-    "issues": "https://github.com/michalfelski/gforces-coding-standard/issues"
+    "issues": "https://github.com/GForces-PL/coding-standard/issues"
   },
   "require": {
     "squizlabs/php_codesniffer": ">=1.4.2"

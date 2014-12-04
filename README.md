@@ -2,8 +2,7 @@
 ```JSON
 
   "require-dev": {
-    "squizlabs/php_codesniffer": "2.0.*@dev",
-    "michalfelski/gforces-coding-standard": ">=1.0"
+    "GForces-PL/coding-standard": ">=1.0"
   },
 
 ```
