@@ -10,6 +10,7 @@
         <exclude name="Generic.ControlStructures.InlineControlStructure" />
         <exclude name="Generic.Files.LineLength" />
         <exclude name="Squiz.Scope.MethodScope" />
+        <exclude name="Squiz.Classes.ValidClassName" />
     </rule>
 
     <rule ref="PEAR.ControlStructures.MultiLineCondition" />
