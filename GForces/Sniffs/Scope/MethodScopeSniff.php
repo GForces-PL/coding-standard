@@ -15,7 +15,7 @@ class GForces_Sniffs_Scope_MethodScopeSniff extends Squiz_Sniffs_Scope_MethodSco
     {
         if ($namespace = $phpcsFile->findNext(T_NAMESPACE, 1)) {
             $tokens = $phpcsFile->getTokens();
-            if (isset($tokens[$namespace + 2]) && $tokens[$namespace + 2]['content'] == 'spec') {
+            if (isset($tokens[$namespace + 2]) && in_array($tokens[$namespace + 2]['content'], ['spec', 'spec_nightly'])) {
                 return;
             }
         }
