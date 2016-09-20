@@ -4,7 +4,6 @@ class GForces_Sniffs_Arrays_SquareBracketArraysSniff implements PHP_CodeSniffer_
 {
     /**
      * Returns an array of tokens this test wants to listen for.
-     *
      * @return array
      */
     public function register()
@@ -14,11 +13,9 @@ class GForces_Sniffs_Arrays_SquareBracketArraysSniff implements PHP_CodeSniffer_
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
-     *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being checked.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
-     *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)

@@ -9,7 +9,9 @@ class GForces_Sniffs_Classes_ClassDeclarationSniff implements PHP_CodeSniffer_Sn
     public function register()
     {
         return [
-            T_CLASS, T_INTERFACE, T_TRAIT,
+            T_CLASS,
+            T_INTERFACE,
+            T_TRAIT,
         ];
     }
 
