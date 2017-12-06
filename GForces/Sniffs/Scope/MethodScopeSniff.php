@@ -13,7 +13,7 @@ class GForces_Sniffs_Scope_MethodScopeSniff extends Squiz_Sniffs_Scope_MethodSco
      */
     protected function processTokenWithinScope(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $currScope)
     {
-        if (Helper::isSpecFile($phpcsFile->getFilename())) {
+        if (GForces_Helper::isSpecFile($phpcsFile->getFilename())) {
             return;
         }
         parent::processTokenWithinScope($phpcsFile, $stackPtr, $currScope);

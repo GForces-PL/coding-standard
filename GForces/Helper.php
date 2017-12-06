@@ -4,7 +4,7 @@
  *
  * @author Piotr Hoppe
  */
-class Helper
+class GForces_Helper
 {
     public static function isSpecFile(string $fileName): bool
     {
