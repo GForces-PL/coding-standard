@@ -12,11 +12,8 @@ class GForces_Sniffs_Methods_CamelCapsMethodNameSniff extends PSR1_Sniffs_Method
      */
     protected function processTokenWithinScope(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $currScope)
     {
-        if ($namespace = $phpcsFile->findNext(T_NAMESPACE, 1)) {
-            $tokens = $phpcsFile->getTokens();
-            if (isset($tokens[$namespace + 2]) && in_array($tokens[$namespace + 2]['content'], ['spec', 'spec_nightly'])) {
-                return;
-            }
+        if (GForces_Helper::isSpecFile($phpcsFile->getFilename())) {
+            return;
         }
         parent::processTokenWithinScope($phpcsFile, $stackPtr, $currScope);
     }
